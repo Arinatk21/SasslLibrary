@@ -1,0 +1,110 @@
+h1 {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /*Inbyggd*/
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  
+  body {
+    
+    width: 100%;
+    height: 300vh;
+    overflow-y: scroll;
+      background: linear-gradient(#505c7c,#2c313e,#242424);
+      background-repeat:no-repeat;
+      background-size:cover;
+      background-attachment: fixed;
+  
+  
+  
+  }
+  
+  .bats {
+    height: 1000px;
+    width: 1000px;
+    position:relative;
+    background-attachment: fixed;
+  
+  }
+  
+  .container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .logo {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 5%;
+    left: 42%;
+  }
+  .navbar{
+    background-color: black;
+    
+  }
+  .navbar-nav{
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding 0px;
+  }
+  .nav-time{
+    margin-right: 10px;
+  }
+  .nav-link{
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 100px;
+    
+  }
+  .nav-link:hover{
+    background-color: #ddd;
+  }
+  .logo img{
+    width: 200px;
+    height: 150px;
+  }
+  .parallel-text{
+    position: absolute;
+    font-family: 'Montserrat' ,sans-serif;
+    font-size:15vw;
+    font-style:italic;
+    top: 1000px;
+  }
+  .parallel-text::after{
+    content: attr(text);
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    color: transparent;
+    -webkit-text-stroke: 0.15vw black;
+  
+  }
+  img.rotate{
+    width: 50vw;
+    animation: batarangAnimation
+    2s cubic-bezier(0.25,1,0.5,1) infinite alternate;
+  
+  }
+  @keyframes batarangAnimation{
+    0%,10%{
+      transform: 
+      translate(100vw,0) rotate(15deg);
+    }
+    90%, 100%{
+      transform: 
+      translate(-5vw, -5vw) rotate(-30deg);
+    }
+  }
+  /*# sourceMappingURL=style.css.map */
