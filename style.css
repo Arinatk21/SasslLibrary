@@ -1,87 +1,150 @@
+@charset "UTF-8";
 h1 {
   display: flex;
   justify-content: center;
 }
 
+.gradient {
+  width: 100%;
+  height: 300vh;
+  overflow-y: scroll;
+  background: linear-gradient(#505c7c, #2c313e, #242424);
+  background-size: 400%;
+  animation: gradient 5s infinite;
+}
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0%, 50%;
+  }
+  50% {
+    background-position: 100%, 50%;
+  }
+}
 /*Inbyggd*/
 * {
+  margin: 0; /*margin sets the margin property of all elements to 0, padding sets the padding property to 0.*/
+  padding: 0;
+}
+
+section {
+  width: 100%; /*width sets the width of the elemtns to 100%, and height is set to 100vh which is the view height of the browser*/
+  height: 100vh;
+}
+
+body {
+  background-color: rgb(0, 0, 0); /*the background color is set to black, the width and height is also mentioned again, there is a linear gradient background with three different colors also set as the background but it is over the black background*/
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(#505c7c, #2c313e, #242424);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.main-page {
+  overflow-y: scroll;
+  width: 100%; /*to make the browser scroll i used overflow-y:scroll with height 100vh to match with the body*/
+  height: 100%;
+  scroll-snap-type: y mandatory;
+}
+
+.container {
+  position: relative;
+  min-height: 100%; /*the container element has a relative position to occupy the 100vh height, and scrollbar allows vertical scrolling with smooth scrolling. */
+  min-height: 100%;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.logo {
+  display: flex;
+  padding-left: 20px;
+}
+.logo .bat-logo { /*The elements below the class logo includes styles fo the logo image such as the header, text, and animation which is the @include animation-text. In a flexbox layout there is padding, font, size and the color transition*/
+  height: 70px;
+  justify-self: flex-start;
+}
+.logo .header {
+  font-size: 40px;
+  justify-self: center;
+  color: #282e3c;
+  transition: color 1s;
+}
+.logo .header:hover {
+  color: #988829; /* This is a general mixin, it is supposed to add two colors to a text which changes the color when you put your mouse on the text. To add this mixin into text you have to use @include animated-text.*/
+}
+
+@font-face {
+  font-family: "BlockyFont";
+  src: url("path/to/blocky-font.ttf") format("truetype"); /* this code is an @font-face rule in css which changes normal font into blocky font it is general and can be used for more than one class.*/
+}
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* The class header is the start for a navbar, it also includes the code @font-face and mixin animation @animation-text. Height and position is also asked for, the position is ruled by the left element.*/
+  height: 100px;
+  left: 100px;
+  font-family: "BlockyFont", sans-serif;
+  color: #ffffff;
+  transition: color 1s;
+}
+.header:hover {
+  color: #1d1d1c; /* This is a general mixin, it is supposed to add two colors to a text which changes the color when you put your mouse on the text. To add this mixin into text you have to use @include animated-text.*/
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+.navbar {
+  background-color: black; /* The navbar is decided to have a black background the height is like a padding which decides how thick the navbar is gonna be which in this case is 60px. The code @font-face is added again.*/
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "BlockyFont", sans-serif;
+}
+
+ul {
+  list-style-type: none; /* The class ul down to the class parrallel-text sets styles for the navigation bar, with a horizontal list layout, center alignment, no bullet points, the styled links with hover efffects and the position absolute with parallel text.*/
+  display: flex;
+  justify-content: center;
   margin: 0;
   padding: 0;
 }
 
-
-
-body {
-  
-  width: 100%;
-  height: 300vh;
-  overflow-y: scroll;
-    background: linear-gradient(#505c7c,#2c313e,#242424);
-    background-repeat:no-repeat;
-    background-size:cover;
-    background-attachment: fixed;
-
-
-
-}
-
-.bats {
-  height: 1000px;
-  width: 1000px;
-  position:relative;
-  background-attachment: fixed;
-
-}
-
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.logo {
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  top: 5%;
-  left: 42%;
-}
-.navbar{
-  background-color: black;
-  
-}
-.navbar-nav{
-  list-style-type: none;
-  display: flex;
-  justify-content: center;
-  margin: 0;
-  padding 0px;
-}
-.nav-time{
+li {
   margin-right: 10px;
 }
-.nav-link{
+
+.nav-link {
   text-decoration: none;
   color: #fff;
-  padding: 10px 100px;
-  
+  padding: 20px 100px;
+  font-weight: lighter;
+  text-align: center;
 }
-.nav-link:hover{
+
+.nav-link:hover {
   background-color: #ddd;
 }
-.logo img{
-  width: 200px;
-  height: 150px;
+
+.logo img {
+  width: 150px; /* this class was used to change size of the logo above since it wouldn't change previous i had to improvise*/
+  height: 50px;
 }
-.parallel-text{
+
+.parallel-text {
   position: absolute;
-  font-family: 'Montserrat' ,sans-serif;
-  font-size:15vw;
-  font-style:italic;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15vw;
+  font-style: italic;
   top: 1000px;
 }
-.parallel-text::after{
+
+.parallel-text::after {
   content: attr(text);
   position: absolute;
   z-index: 100;
@@ -89,22 +152,130 @@ body {
   left: 0;
   color: transparent;
   -webkit-text-stroke: 0.15vw black;
+}
 
+.text-intro {
+  position: absolute;
+  left: -200%;
+  top: 10%; /*I added a text to swipe in into the website from the left side of the website, to change where it would end up i used the left and top elemen. I even added the blocky font.*/
+  transform: rotateY(-50%);
+  font-size: 24px;
+  color: #988829;
+  animation: swipeIn 3s forwards;
+  font-family: "BlockyFont", sans-serif;
 }
-img.rotate{
-  width: 50vw;
-  animation: batarangAnimation
-  2s cubic-bezier(0.25,1,0.5,1) infinite alternate;
 
-}
-@keyframes batarangAnimation{
-  0%,10%{
-    transform: 
-    translate(100vw,0) rotate(15deg);
+@keyframes swipeIn {
+  0% {
+    left: -100%;
+    opacity: 0; /*Here is the mixin to add swipin motion*/
   }
-  90%, 100%{
-    transform: 
-    translate(-5vw, -5vw) rotate(-30deg);
+  100% {
+    left: 0;
+    opacity: 1;
   }
 }
+.textt {
+  position: absolute;
+  left: 800px;
+  top: 1400px; /* This class includes a text written in html, it is meant to be put in the about section. Font style and font size is changed and a mixin of colorful-box and animated-text is also added.*/
+  color: #000000;
+  font-size: 20px;
+  background-color: #fdff00;
+  padding: 10px;
+  display: inline-block;
+  color: #000000;
+  font-family: "BlockyFont", sans-serif;
+  color: #282e3c;
+  transition: color 1s;
+}
+.textt:hover {
+  color: #988829; /* This is a general mixin, it is supposed to add two colors to a text which changes the color when you put your mouse on the text. To add this mixin into text you have to use @include animated-text.*/
+}
+
+@keyframes batarangAnimation {
+  0%, 10% { /* this is a mixin to rotate an image, by adding a tranfsorm property to it.*/
+    transform: translate(100%, 0) rotate(15deg);
+    /*the transfomration is rotation added to batarangdAnimation. It's been added  by @include.*/
+  }
+  90%, 100% { /* this is a mixin to rotate an image, by adding a tranfsorm property to it.*/
+    transform: translate(-5%, -5%) rotate(-30deg);
+  }
+}
+.joker {
+  /*A class added to show the picture put in img html.*/
+}
+
+.rotate {
+  animation: batarangAnimation 6s infinite; /*The Animation mentioned before joker, to be seen on the webpage.*/
+}
+
+.text {
+  position: absolute;
+  left: 800px;
+  top: 1700px;
+  color: #fff;
+  font-size: 20px; /*This is a good example of added codes such as mixins, here we see a text with the mixin colorful-block to add a color box behind the text, also a animated-text to change color when you click on it. The font is also changed to blocky to match the theme. Font size  is also added which is 20px. With the position absolute to stay on place and not move.*/
+  background-color: #fdff00;
+  padding: 10px; /*This mixin is used to add a colorful box to the text used on the webs´page. to add it you'll have to use @include colorful-block to the class*/
+  display: inline-block;
+  color: #000000;
+  font-family: "BlockyFont", sans-serif;
+  color: #282e3c;
+  transition: color 1s;
+  font-size: 16px;
+}
+.text:hover {
+  color: #988829; /* This is a general mixin, it is supposed to add two colors to a text which changes the color when you put your mouse on the text. To add this mixin into text you have to use @include animated-text.*/
+}
+@media screen and (min-width: 768px) {
+  .text {
+    /*This mixin sets a font size for the elements, there is different values for mobile and desktop views. The width is written to be set 768 px.*/
+    font-size: 20px;
+  }
+}
+
+.darkknight {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center; /*The class darkknight has a relative position, via flexbox its used to center it vertically and horizontally.Heihgt and width is 100% which means full height and width of its content. With a margin at the bottom at 20px*/
+  height: 100%;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.darkknight img {
+  width: 100%; /*Image added from html.*/
+  height: 100%;
+}
+
+/*This defines variables for color and padding.*/
+.box {
+  background-color: #f1f1f1;
+  padding: 20px; /*This is the box including the code above with border 1px.*/
+  border: 1px solid #ccc;
+}
+
+#about {
+  border: 3px solid #000000; /*border around the about section is black and 3px solid.*/
+}
+
+.about-container {
+  border: 1px solid #000000;
+  border-width: 0px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*The hardest thing about this poejct was to figure out how to solve the code problems. sometimes
+problems would occur and I needed help sometimes to find where it was and how to solve the problem.
+With the help of others I started to get the hang of it and taught myself along the way. The most complicated so far with my webpage was to add
+mixins, I didn't know how to add more mixins into my project but I got enough to make
+it work. What I liked the most about my project was the layout and how the theme was matching 
+according to my plan. The Darkknight movie includes blocky font, which is why I decided to add it
+and the colors are the colors used in the movie. I wanted to match the webpage according to the Darkknight
+movie which was my first plan.*/
 /*# sourceMappingURL=style.css.map */

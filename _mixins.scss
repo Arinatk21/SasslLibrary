@@ -10,7 +10,12 @@ h1 {
         -ms-flex-pack: center;
             justify-content: center;
 }
-
+@mixin gridItem{
+    border: 1px solid rgba(216, 109, 109, 0.8);
+    padding: 10px 0;
+    font-size: 30px;
+    text-align: center;
+}
 .gradient{
     width: 100%;
   height: 300vh;
@@ -28,3 +33,12 @@ h1 {
         background-position: 100%, 50%;
     }
 }
+@mixin colorful-block($background-color, $text-color){
+    background-color: $background-color;
+    padding: 10px;
+    display: inline-block;
+    color: $text-color;
+}
+@mixin gradient-background($start-color,$end-color){
+    background:linear-gradient($start-color,$end-color);
+    }
